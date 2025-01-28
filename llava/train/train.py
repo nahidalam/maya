@@ -77,6 +77,8 @@ class ModelArguments:
     mm_use_im_patch_token: bool = field(default=True)
     mm_patch_merge_type: Optional[str] = field(default='flat')
     mm_vision_select_feature: Optional[str] = field(default="patch")
+    unfreeze_text_layers: Optional[int] = field(default=None)
+    unfreeze_vision_layers: Optional[int] = field(default=None)
 
 
 @dataclass
@@ -829,6 +831,52 @@ def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer,
                 data_collator=data_collator)
 
 
+def unfreeze_text_layers(model, count, verbose=True):
+    """
+    Unfreeze the last `count` layers of the model, starting from the outermost layers
+    and moving in reverse order.
+
+    Args:
+        model (torch.nn.Module): The model whose layers are to be unfrozen.
+        count (int): Number of layers to unfreeze from the end.
+        verbose (bool): If True, prints debug messages about freezing/unfreezing.
+    """
+    counter = 1  # Initialize the counter for layers
+    outer_layers = list(reversed(list(model.named_children())))  # Reverse the layer order
+    
+    for name, layer in outer_layers:
+        if isinstance(layer, torch.nn.ModuleList):
+            # Handle ModuleList layers
+            for att_name, attn_layer in list(reversed(list(layer.named_children()))):
+                if counter > count:
+                    if verbose:
+                        print(f'Freezing nn.ModuleList layer {att_name}: {counter}')
+                    for param in attn_layer.parameters():
+                        param.requires_grad = False
+                else:
+                    if verbose:
+                        print(f'NOT-Freezing nn.ModuleList layer {att_name}: {counter}')
+                    for param in attn_layer.parameters():
+                        param.requires_grad = True
+                counter += 1
+        else:
+            # Handle top-level layers
+            if counter > count:
+                if verbose:
+                    print(f'Freezing model layer {name}: {counter}')
+                for param in layer.parameters():
+                    param.requires_grad = False
+            else:
+                for param in layer.parameters():
+                    param.requires_grad = True
+                if verbose:
+                    print(f'NOT-Freezing model layer {name}: {counter}')
+            counter += 1
+
+    if verbose:
+        print(f"\nFinished unfreezing the last {count} layers.")
+
+
 def train(attn_implementation=None):
     global local_rank
 
@@ -893,7 +941,9 @@ def train(attn_implementation=None):
         )
     model.config.use_cache = False
 
-    if model_args.freeze_backbone:
+    if model_args.unfreeze_text_layers:
+        unfreeze_text_layers(model.model, model_args.unfreeze_text_layers)
+    else:
         model.model.requires_grad_(False)
 
     if training_args.bits in [4, 8]:
@@ -1001,7 +1051,8 @@ def train(attn_implementation=None):
 
         model.config.tune_mm_mlp_adapter = training_args.tune_mm_mlp_adapter = model_args.tune_mm_mlp_adapter
         if model_args.tune_mm_mlp_adapter:
-            model.requires_grad_(False)
+            if not (model_args.unfreeze_text_layers or model_args.unfreeze_vision_layers): # avoid freezing when one of the params are set
+                model.requires_grad_(False)
             for p in model.get_model().mm_projector.parameters():
                 p.requires_grad = True
 
