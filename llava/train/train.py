@@ -877,6 +877,35 @@ def unfreeze_text_layers(model, count, verbose=True):
         print(f"\nFinished unfreezing the last {count} layers.")
 
 
+
+
+def unfreeze_vision_layers(encoder, count, verbose=True):
+    """
+    Unfreeze the last `count` layers of the image encoder based on parameter names.
+
+    Args:
+        encoder (torch.nn.Module): The image encoder whose layers are to be unfrozen.
+        count (int): Number of layers to unfreeze from the end.
+        verbose (bool): If True, prints debug messages about freezing/unfreezing.
+    """
+    # Collect all parameters with their corresponding layer depth
+    param_list = [(name, param) for name, param in encoder.named_parameters()]
+    total_layers = len(param_list)
+
+    for idx, (name, param) in enumerate(param_list):
+        if idx >= total_layers - count:
+            param.requires_grad = True
+            if verbose:
+                print(f'NOT-Freezing parameter: {name} (Layer {idx+1})')
+        else:
+            param.requires_grad = False
+            if verbose:
+                print(f'Freezing parameter: {name} (Layer {idx+1})')
+
+    if verbose:
+        print(f"\nFinished unfreezing the last {count} layers.")
+
+
 def train(attn_implementation=None):
     global local_rank
 
@@ -943,6 +972,8 @@ def train(attn_implementation=None):
 
     if model_args.unfreeze_text_layers:
         unfreeze_text_layers(model.model, model_args.unfreeze_text_layers)
+    elif model_args.unfreeze_vision_layers:
+        unfreeze_vision_layers(model.model, model_args.unfreeze_vision_layers)
     else:
         model.model.requires_grad_(False)
 

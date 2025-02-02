@@ -18,7 +18,8 @@ deepspeed llava/train/train_mem.py \
     --mm_projector_type mlp2x_gelu \
     --tune_mm_mlp_adapter True \
     --mm_vision_select_layer -2 \
-    --unfreeze_text_layers 8 \
+    --unfreeze_text_layers 2 \
+    --unfreeze_vision_layers 2 \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
     --bf16 True \
