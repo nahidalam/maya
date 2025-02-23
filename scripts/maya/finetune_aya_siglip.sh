@@ -7,7 +7,7 @@ deepspeed llava/train/train_mem.py \
     --data_path /dev/data/annotations/palo_multilingual_dataset.json \
     --image_folder /dev/data/instruction_tune_dataset/ \
     --vision_tower google/siglip-base-patch16-256-multilingual \
-    --pretrain_mm_mlp_adapter ./checkpoints/llava-aya-23-8b-siglip-multi-8lang-32bz-pretrain/mm_projector.bin \
+    --pretrain_mm_mlp_adapter ./checkpoints/maya_pretrain__text_2_layer_unfreeze/mm_projector.bin \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
