@@ -11,6 +11,6 @@ def build_vision_tower(vision_tower_cfg, **kwargs):
             return CLIPVisionTowerS2(vision_tower, args=vision_tower_cfg, **kwargs)
         else:
             return CLIPVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
-    elif 'siglip' in vision_tower:
+    elif 'siglip' in vision_tower or 'gemma' in vision_tower:
         return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
     raise ValueError(f'Unknown vision tower: {vision_tower}')
