@@ -26,7 +26,7 @@ class SiglipVisionTower(nn.Module):
             return
 
         self.image_processor = SiglipImageProcessor.from_pretrained(self.vision_tower_name)
-        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
         self.vision_tower.requires_grad_(False)
 
         self.is_loaded = True
@@ -115,7 +115,7 @@ class SiglipVisionTowerS2(SiglipVisionTower):
             return
 
         self.image_processor = SiglipImageProcessor.from_pretrained(self.vision_tower_name)
-        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
         self.vision_tower.requires_grad_(False)
 
         self.image_processor.size['shortest_edge'] = self.s2_image_size
