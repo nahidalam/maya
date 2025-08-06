@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-MODEL_VERSION=aya-23-8b-gemma3-siglip-multi
+MODEL_VERSION=maya-8b-gemma3-siglip-it
 
 ########### DO NOT CHANGE ###########
 ########### USE THIS FOR BOTH ###########
@@ -12,9 +12,9 @@ deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero2.json \
     --model_name_or_path CohereForAI/aya-23-8B \
     --version $PROMPT_VERSION \
-    --data_path /dev/data/LLaVA_Pretrain \
+    --data_path /dev/data/LLaVA_Pretrain/maya_pretrain_v2_e1_english.json \
     --image_folder /dev/data/images \
-    --vision_tower google/gemma-3-4b-pt \
+    --vision_tower google/gemma-3-4b-it \
     --mm_projector_type mlp2x_gelu \
     --tune_mm_mlp_adapter True \
     --mm_vision_select_layer -2 \

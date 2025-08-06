@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-MODEL_VERSION=aya-23-8b-siglip-multi
+MODEL_VERSION=vicuna-7b-v1.5-siglip-multi
 
 ########### DO NOT CHANGE ###########
 ########### USE THIS FOR BOTH ###########
@@ -10,9 +10,9 @@ PROMPT_VERSION=plain
 
 deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero2.json \
-    --model_name_or_path CohereForAI/aya-23-8B \
+    --model_name_or_path lmsys/vicuna-7b-v1.5 \
     --version $PROMPT_VERSION \
-    --data_path /dev/data/LLaVA_Pretrain/maya_pretrain_v2_e1_english.json \
+    --data_path /dev/data/LLaVA_Pretrain/blip_laion_cc_sbu_558k.json \
     --image_folder /dev/data/images \
     --vision_tower google/siglip-base-patch16-256-multilingual \
     --mm_projector_type mlp2x_gelu \
