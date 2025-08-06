@@ -1,0 +1,400 @@
+nohup: ignoring input
+[2025-08-06 21:34:18,311] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[2025-08-06 21:34:19,251] [WARNING] [runner.py:202:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2025-08-06 21:34:19,251] [INFO] [runner.py:568:main] cmd = /opt/conda/envs/maya/bin/python3.10 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN119 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None llava/train/train_mem.py --deepspeed ./scripts/zero2.json --model_name_or_path lmsys/vicuna-7b-v1.5 --version plain --data_path ./dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json --image_folder ./dev/data/images --vision_tower google/siglip2-so400m-patch16-naflex --mm_projector_type mlp2x_gelu --tune_mm_mlp_adapter True --mm_vision_select_layer -2 --mm_use_im_start_end False --mm_use_im_patch_token False --bf16 True --output_dir ./checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex --num_train_epochs 1 --per_device_train_batch_size 32 --per_device_eval_batch_size 4 --gradient_accumulation_steps 1 --evaluation_strategy no --save_strategy steps --save_steps 24000 --save_total_limit 1 --learning_rate 1e-3 --weight_decay 0. --warmup_ratio 0.03 --lr_scheduler_type cosine --logging_steps 1 --tf32 True --model_max_length 2048 --gradient_checkpointing True --dataloader_num_workers 4 --lazy_preprocess True --report_to wandb
+[2025-08-06 21:34:21,493] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[2025-08-06 21:34:22,448] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0, 1, 2, 3, 4, 5, 6, 7]}
+[2025-08-06 21:34:22,448] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=8, node_rank=0
+[2025-08-06 21:34:22,448] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1, 2, 3, 4, 5, 6, 7]})
+[2025-08-06 21:34:22,448] [INFO] [launch.py:164:main] dist_world_size=8
+[2025-08-06 21:34:22,448] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+[2025-08-06 21:34:22,449] [INFO] [launch.py:256:main] process 462538 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=0', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,449] [INFO] [launch.py:256:main] process 462539 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=1', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,450] [INFO] [launch.py:256:main] process 462540 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=2', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,450] [INFO] [launch.py:256:main] process 462541 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=3', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,451] [INFO] [launch.py:256:main] process 462542 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=4', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,452] [INFO] [launch.py:256:main] process 462543 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=5', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,452] [INFO] [launch.py:256:main] process 462544 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=6', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+[2025-08-06 21:34:22,453] [INFO] [launch.py:256:main] process 462545 spawned with command: ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=7', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb']
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+[2025-08-06 21:34:28,752] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2025-08-06 21:34:28,836] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2025-08-06 21:34:29,030] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-06 21:34:29,032] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-06 21:34:29,032] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-06 21:34:29,032] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-06 21:34:29,037] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-06 21:34:29,070] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2025-08-06 21:34:29,167] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-08-06 21:34:29,167] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[2025-08-06 21:34:29,263] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[2025-08-06 21:34:29,473] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-08-06 21:34:29,478] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.1
+[93m [WARNING] [0m using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+[2025-08-06 21:34:29,480] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-08-06 21:34:29,498] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-08-06 21:34:29,543] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-08-06 21:34:29,568] [INFO] [comm.py:637:init_distributed] cdb=None
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are using a model of type llama to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]/opt/conda/envs/maya/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.00s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:05<00:00,  2.84s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:05<00:00,  2.72s/it]
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards:  50%|█████     | 1/2 [00:06<00:06,  6.90s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.30s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.07s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:06<00:06,  6.99s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.20s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.17s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.24s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  3.78s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.31s/it]
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  3.77s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.24s/it]
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.13s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.57s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.09s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.08s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.56s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.54s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.11s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.54s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.13s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.59s/it]
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:628: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:633: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+You are using a model of type siglip2_vision_model to instantiate a model of type siglip_vision_model. This is not supported for all configurations of models and can yield errors.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+        train(attn_implementation="flash_attention_2")model.get_model().initialize_vision_modules(
+
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+Traceback (most recent call last):
+  File "/home/shapla/maya/llava/train/train_mem.py", line 4, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/home/shapla/maya/llava/train/train.py", line 985, in train
+    model.get_model().initialize_vision_modules(
+  File "/home/shapla/maya/llava/model/llava_arch.py", line 59, in initialize_vision_modules
+    vision_tower = build_vision_tower(model_args)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/builder.py", line 15, in build_vision_tower
+    return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 17, in __init__
+    self.load_model()
+  File "/home/shapla/maya/llava/model/multimodal_encoder/siglip_encoder.py", line 29, in load_model
+    self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map)
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4264, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/opt/conda/envs/maya/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4834, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for SiglipVisionModel:
+	size mismatch for vision_model.embeddings.patch_embedding.weight: copying a param with shape torch.Size([1152, 768]) from checkpoint, the shape in current model is torch.Size([1152, 3, 16, 16]).
+	size mismatch for vision_model.embeddings.position_embedding.weight: copying a param with shape torch.Size([256, 1152]) from checkpoint, the shape in current model is torch.Size([196, 1152]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.
+[2025-08-06 21:34:45,478] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462538
+[2025-08-06 21:34:45,498] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462539
+[2025-08-06 21:34:45,513] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462540
+[2025-08-06 21:34:45,527] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462541
+[2025-08-06 21:34:45,540] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462542
+[2025-08-06 21:34:45,553] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462543
+[2025-08-06 21:34:45,580] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462544
+[2025-08-06 21:34:45,686] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 462545
+[2025-08-06 21:34:45,686] [ERROR] [launch.py:325:sigkill_handler] ['/opt/conda/envs/maya/bin/python3.10', '-u', 'llava/train/train_mem.py', '--local_rank=7', '--deepspeed', './scripts/zero2.json', '--model_name_or_path', 'lmsys/vicuna-7b-v1.5', '--version', 'plain', '--data_path', './dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json', '--image_folder', './dev/data/images', '--vision_tower', 'google/siglip2-so400m-patch16-naflex', '--mm_projector_type', 'mlp2x_gelu', '--tune_mm_mlp_adapter', 'True', '--mm_vision_select_layer', '-2', '--mm_use_im_start_end', 'False', '--mm_use_im_patch_token', 'False', '--bf16', 'True', '--output_dir', './checkpoints/llava-v1.5-7b-pretrain-siglip2-so400m-patch16-naflex', '--num_train_epochs', '1', '--per_device_train_batch_size', '32', '--per_device_eval_batch_size', '4', '--gradient_accumulation_steps', '1', '--evaluation_strategy', 'no', '--save_strategy', 'steps', '--save_steps', '24000', '--save_total_limit', '1', '--learning_rate', '1e-3', '--weight_decay', '0.', '--warmup_ratio', '0.03', '--lr_scheduler_type', 'cosine', '--logging_steps', '1', '--tf32', 'True', '--model_max_length', '2048', '--gradient_checkpointing', 'True', '--dataloader_num_workers', '4', '--lazy_preprocess', 'True', '--report_to', 'wandb'] exits with return code = 1
