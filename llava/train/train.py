@@ -877,6 +877,8 @@ def train(attn_implementation=None):
         elif 'aya' in model_args.model_name_or_path:
             model = LlavaCohereForCausalLM.from_pretrained(
                 model_args.model_name_or_path,
+                trust_remote_code=True,
+                use_safetensors=True, 
                 cache_dir=training_args.cache_dir,
                 attn_implementation=attn_implementation,
                 torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
@@ -885,6 +887,8 @@ def train(attn_implementation=None):
         else:
             model = LlavaLlamaForCausalLM.from_pretrained(
                 model_args.model_name_or_path,
+                trust_remote_code=True,
+                use_safetensors=True,
                 cache_dir=training_args.cache_dir,
                 attn_implementation=attn_implementation,
                 torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
