@@ -1,6 +1,8 @@
 import os
+from transformers.trainer import logger
 from .clip_encoder import CLIPVisionTower, CLIPVisionTowerS2
 from .siglip_encoder import SiglipVisionTower
+from .siglip2_encoder import Siglip2VisionTower
 
 def build_vision_tower(vision_tower_cfg, **kwargs):
     vision_tower = getattr(vision_tower_cfg, 'mm_vision_tower', getattr(vision_tower_cfg, 'vision_tower', None))
@@ -11,6 +13,10 @@ def build_vision_tower(vision_tower_cfg, **kwargs):
             return CLIPVisionTowerS2(vision_tower, args=vision_tower_cfg, **kwargs)
         else:
             return CLIPVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
+    elif 'naflex' in vision_tower:
+        logger.info(f"naflex version with {vision_tower} found")
+        return Siglip2VisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
     elif 'siglip' in vision_tower or 'gemma' in vision_tower:
+        logger.info(f"siglip was in {vision_tower} found")
         return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
     raise ValueError(f'Unknown vision tower: {vision_tower}')

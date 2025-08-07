@@ -781,6 +781,7 @@ class LazySupervisedDataset(Dataset):
         elif self.data_args.is_multimodal:
             # image does not exist in the data, but the model is multimodal
             #crop_size = self.data_args.image_processor.crop_size or {'height': 224, 'width': 224}
+            # TODO: How to handle siglip naflex here for crop size? just keep it same as other siglip? since it is variable length path size, does it matter?
             if 'siglip' in self.data_args.image_processor.image_processor_type.lower():
                 crop_size = {'height': 256, 'width': 256}
             else:
