@@ -4,8 +4,8 @@ deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero2.json \
     --model_name_or_path lmsys/vicuna-7b-v1.5 \
     --version plain \
-    --data_path ./dev/data/LLaVA-Pretrain/blip_laion_cc_sbu_558k.json \
-    --image_folder ./dev/data/images \
+    --data_path /dev/data/LLaVA_Pretrain/blip_laion_cc_sbu_558k.json \
+    --image_folder /dev/data/images \
     --vision_tower google/siglip2-so400m-patch16-naflex \
     --mm_projector_type mlp2x_gelu \
     --tune_mm_mlp_adapter True \
@@ -18,7 +18,7 @@ deepspeed llava/train/train_mem.py \
     --per_device_train_batch_size 32 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 1 \
-    --evaluation_strategy "no" \
+    --eval_strategy "no" \
     --save_strategy "steps" \
     --save_steps 24000 \
     --save_total_limit 1 \

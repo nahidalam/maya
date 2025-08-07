@@ -47,7 +47,12 @@ pip install -e .
 pip install -e ".[train]"
 pip install flash-attn==2.6.3 --no-build-isolation --no-cache-dir
 ```
+4. Bump transformers version for Siglip2-Naflex (4.50.0) and Aimv2 (4.54.0). This also leads to bumping accelerate version to 1.3.0 since the `unwrap_model` function of accelerate introduced `keep_torch_compile` parameter which is expected by the newer transformers
 
+```
+pip install -U transformers==4.54.0
+pip install -U accelerate==1.3.0
+```
 
 ## Model Weights and Dataset
 [HuggingFace](https://huggingface.co/maya-multimodal)

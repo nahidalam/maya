@@ -1,9 +1,13 @@
+'''
+This file only handles naflex variant of Siglip2. The regulat Siglip2 is handled the same way as Siglip
+'''
+
 import torch
 import torch.nn as nn
 
-from transformers import SiglipVisionModel, SiglipImageProcessor, SiglipVisionConfig
+from transformers import Siglip2VisionModel, Siglip2ImageProcessor, Siglip2VisionConfig
 
-class SiglipVisionTower(nn.Module):
+class Siglip2VisionTower(nn.Module):
     def __init__(self, vision_tower, args, delay_load=False):
         super().__init__()
 
@@ -18,15 +22,15 @@ class SiglipVisionTower(nn.Module):
         elif getattr(args, 'unfreeze_mm_vision_tower', False):
             self.load_model()
         else:
-            self.cfg_only = SiglipVisionConfig.from_pretrained(self.vision_tower_name)
+            self.cfg_only = Siglip2VisionConfig.from_pretrained(self.vision_tower_name)
 
     def load_model(self, device_map=None):
         if self.is_loaded:
             print('{} is already loaded, `load_model` called again, skipping.'.format(self.vision_tower_name))
             return
 
-        self.image_processor = SiglipImageProcessor.from_pretrained(self.vision_tower_name)
-        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
+        self.image_processor = Siglip2ImageProcessor.from_pretrained(self.vision_tower_name)
+        self.vision_tower = Siglip2VisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
         self.vision_tower.requires_grad_(False)
 
         self.is_loaded = True
@@ -46,11 +50,37 @@ class SiglipVisionTower(nn.Module):
         if type(images) is list:
             image_features = []
             for image in images:
-                image_forward_out = self.vision_tower(image.to(device=self.device, dtype=self.dtype).unsqueeze(0), output_hidden_states=True)
+                # Ensure input is float32 before image processor
+                # images = images.to(dtype=torch.float32)
+                # Preprocess image to get pixel_values, pixel_attention_mask, spatial_shapes
+                batch_feature = self.image_processor(image.unsqueeze(0))
+                pixel_values = batch_feature["pixel_values"].to(device=self.device, dtype=self.dtype)
+                pixel_attention_mask = batch_feature["pixel_attention_mask"].to(device=self.device)
+                spatial_shapes = batch_feature["spatial_shapes"].to(device=self.device)
+
+                # Call vision model
+                image_forward_out = self.vision_tower(
+                    pixel_values=pixel_values,
+                    pixel_attention_mask=pixel_attention_mask,
+                    spatial_shapes=spatial_shapes,
+                    output_hidden_states=True,
+                )
+
                 image_feature = self.feature_select(image_forward_out).to(image.dtype)
                 image_features.append(image_feature)
         else:
-            image_forward_outs = self.vision_tower(images.to(device=self.device, dtype=self.dtype), output_hidden_states=True)
+            batch_feature = self.image_processor(images)
+            pixel_values = batch_feature["pixel_values"].to(device=self.device, dtype=self.dtype)
+            pixel_attention_mask = batch_feature["pixel_attention_mask"].to(device=self.device)
+            spatial_shapes = batch_feature["spatial_shapes"].to(device=self.device)
+
+            image_forward_outs = self.vision_tower(
+                pixel_values=pixel_values,
+                pixel_attention_mask=pixel_attention_mask,
+                spatial_shapes=spatial_shapes,
+                output_hidden_states=True,
+            )
+
             image_features = self.feature_select(image_forward_outs).to(images.dtype)
 
         return image_features
@@ -88,7 +118,7 @@ class SiglipVisionTower(nn.Module):
 
 
 
-class SiglipVisionTowerS2(SiglipVisionTower):
+class Siglip2VisionTowerS2(Siglip2VisionTower):
     def __init__(self, vision_tower, args, delay_load=False):
         super().__init__(vision_tower, args, delay_load)
 
@@ -114,8 +144,8 @@ class SiglipVisionTowerS2(SiglipVisionTower):
             print('{} is already loaded, `load_model` called again, skipping.'.format(self.vision_tower_name))
             return
 
-        self.image_processor = SiglipImageProcessor.from_pretrained(self.vision_tower_name)
-        self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
+        self.image_processor = Siglip2ImageProcessor.from_pretrained(self.vision_tower_name)
+        self.vision_tower = Siglip2VisionModel.from_pretrained(self.vision_tower_name, device_map=device_map, ignore_mismatched_sizes=True)
         self.vision_tower.requires_grad_(False)
 
         self.image_processor.size['shortest_edge'] = self.s2_image_size
