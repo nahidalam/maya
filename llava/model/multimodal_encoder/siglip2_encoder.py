@@ -51,9 +51,9 @@ class Siglip2VisionTower(nn.Module):
             image_features = []
             for image in images:
                 # Ensure input is float32 before image processor
-                images = images.to(dtype=torch.float32)
+                # images = images.to(dtype=torch.float32)
                 # Preprocess image to get pixel_values, pixel_attention_mask, spatial_shapes
-                batch_feature = self.image_processor(image.unsqueeze(0), return_tensors="pt")
+                batch_feature = self.image_processor(image.unsqueeze(0))
                 pixel_values = batch_feature["pixel_values"].to(device=self.device, dtype=self.dtype)
                 pixel_attention_mask = batch_feature["pixel_attention_mask"].to(device=self.device)
                 spatial_shapes = batch_feature["spatial_shapes"].to(device=self.device)
@@ -69,7 +69,7 @@ class Siglip2VisionTower(nn.Module):
                 image_feature = self.feature_select(image_forward_out).to(image.dtype)
                 image_features.append(image_feature)
         else:
-            batch_feature = self.image_processor(images, return_tensors="pt")
+            batch_feature = self.image_processor(images)
             pixel_values = batch_feature["pixel_values"].to(device=self.device, dtype=self.dtype)
             pixel_attention_mask = batch_feature["pixel_attention_mask"].to(device=self.device)
             spatial_shapes = batch_feature["spatial_shapes"].to(device=self.device)

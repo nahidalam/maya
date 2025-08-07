@@ -47,7 +47,11 @@ pip install -e .
 pip install -e ".[train]"
 pip install flash-attn==2.6.3 --no-build-isolation --no-cache-dir
 ```
+4. Bump transformers version for Siglip2-Naflex
 
+```
+pip install -U transformers==4.50.0
+```
 
 ## Model Weights and Dataset
 [HuggingFace](https://huggingface.co/maya-multimodal)
