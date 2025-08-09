@@ -75,6 +75,11 @@ class LlavaMetaModel:
         self.config.mm_vision_select_layer = mm_vision_select_layer
         self.config.mm_vision_select_feature = mm_vision_select_feature
         self.config.mm_patch_merge_type = mm_patch_merge_type
+        
+        # Q-Former specific configurations
+        if 'qformer' in self.config.mm_projector_type:
+            self.config.mm_qformer_num_query_tokens = getattr(model_args, 'mm_qformer_num_query_tokens', 64)
+            self.config.mm_qformer_pretrained_path = getattr(model_args, 'mm_qformer_pretrained_path', None)
 
         if getattr(self, 'mm_projector', None) is None:
             self.mm_projector = build_vision_projector(self.config)

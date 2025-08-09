@@ -48,4 +48,27 @@ def build_vision_projector(config, delay_load=False, **kwargs):
     if projector_type == 'identity':
         return IdentityMap()
 
+    # Q-Former projector types
+    if projector_type in ['qformer', 'qformer_blip2', 'qformer_instructblip']:
+        from .qformer_projector import build_qformer_projector
+        
+        # Parse Q-Former type
+        if projector_type in ['qformer','qformer_blip2']:
+            qformer_type = 'blip2'  # default
+        elif projector_type == 'qformer_instructblip':
+            qformer_type = 'instructblip'
+        else:
+            raise ValueError(f'Unknown Q-Former type: {projector_type}')
+        
+        # Get Q-Former configuration parameters
+        num_query_tokens = getattr(config, 'mm_qformer_num_query_tokens', 64)
+        pretrained_qformer_path = getattr(config, 'mm_qformer_pretrained_path', None)
+        
+        return build_qformer_projector(
+            config=config,
+            qformer_type=qformer_type,
+            num_query_tokens=num_query_tokens,
+            pretrained_qformer_path=pretrained_qformer_path
+        )
+
     raise ValueError(f'Unknown projector type: {projector_type}')
